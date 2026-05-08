@@ -1,0 +1,37 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "bento/ubuntu-22.04"
+
+  # ────────────────────────────────────────────
+  #  Machine 1 : haboudaS  (K3s controller)
+  # ────────────────────────────────────────────
+  config.vm.define "haboudaS" do |server|
+    server.vm.hostname = "haboudaS"
+    server.vm.network "private_network", ip: "192.168.56.110"
+
+    server.vm.provider "virtualbox" do |vb|
+      vb.name   = "haboudaS"
+      vb.memory = "1024"
+      vb.cpus   = 1
+    end
+
+    server.vm.provision "shell", path: "scripts/setup_server.sh"
+  end
+
+  # ────────────────────────────────────────────
+  #  Machine 2 : haboudaSW  (K3s agent)
+  # ────────────────────────────────────────────
+  config.vm.define "haboudaSW" do |worker|
+    worker.vm.hostname = "haboudaSW"
+    worker.vm.network "private_network", ip: "192.168.56.111"
+
+    worker.vm.provider "virtualbox" do |vb|
+      vb.name   = "haboudaSW"
+      vb.memory = "1024"
+      vb.cpus   = 1
+    end
+
+    worker.vm.provision "shell", path: "scripts/setup_worker.sh"
+  end
+
+end
