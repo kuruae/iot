@@ -1,19 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 set -e
-
-echo "==> Waiting for node-token from controller..."
-until [ -f /vagrant/node-token ]; do
-  sleep 3
-done
-
-NODE_TOKEN=$(cat /vagrant/node-token)
-SERVER_IP="192.168.56.110"
 
 echo "==> Installing K3s in agent mode..."
 
+apk add --no-cache curl
+
+export INSTALL_K3S_VERSION="v1.31.4+k3s1"
+export K3S_TOKEN="secrettoken"
+export K3S_URL="https://192.168.56.110:6443"
+
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent \
-  --server=https://${SERVER_IP}:6443 \
-  --token=${NODE_TOKEN} \
   --node-ip=192.168.56.111 \
   --flannel-iface=eth1" sh -
 
