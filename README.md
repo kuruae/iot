@@ -13,7 +13,7 @@ vagrant up
 ```
 
 how do check it works:
-```
+```bash
 vagrant ssh haboudaS
 sudo kubectl get nodes -o wide  # shows ips and status
 ```
