@@ -1,0 +1,32 @@
+global:
+  hosts:
+    domain: localhost
+    https: false
+  ingress:
+    enabled: false
+  edition: ce
+
+certmanager:
+  install: false
+nginx-ingress:
+  enabled: false
+prometheus:
+  install: false
+gitlab-runner:
+  install: false
+
+gitlab:
+  webservice:
+    replicaCount: 1
+  sidekiq:
+    replicaCount: 1
+  gitaly:
+    persistence:
+      size: 5Gi
+
+postgresql:
+  image:
+    tag: 13.6.0
+
+redis:
+  architecture: standalone
