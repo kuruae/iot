@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Dranack21/habouda_iot
+    repoURL: http://gitlab-webservice-default.gitlab.svc.cluster.local:8181/root/habouda_iot.git
     targetRevision: HEAD
     path: .
   destination:
