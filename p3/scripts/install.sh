@@ -15,7 +15,11 @@ else
   k3d cluster create "$CLUSTER_NAME"
 fi
 
-kubectl config use-context "k3d-${CLUSTER_NAME}" >/dev/null 2>&1 || true
+if ! kubectl config use-context "k3d-${CLUSTER_NAME}" >/dev/null 2>&1; then
+  echo "[kubectl] Impossible de sélectionner le contexte 'k3d-${CLUSTER_NAME}'." >&2
+  echo "Vérifie que le cluster k3d est bien créé et que kubeconfig est accessible." >&2
+  exit 1
+fi
 
 # ─────────────────────────────────────────────
 # 2. Namespaces

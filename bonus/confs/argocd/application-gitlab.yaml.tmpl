@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wil-playground
+  name: wil-playground-gitlab
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: http://gitlab-webservice-default.gitlab.svc.cluster.local:8181/root/habouda_iot.git
+    repoURL: __GITLAB_REPO_URL__
     targetRevision: HEAD
     path: .
   destination:

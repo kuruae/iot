@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
     curl wget git vim fish \
+    python3 \
     ca-certificates gnupg lsb-release \
     apt-transport-https \
     openssh-client \
