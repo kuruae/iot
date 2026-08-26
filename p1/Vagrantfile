@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   # ────────────────────────────────────────────
   config.vm.define "haboudaS" do |server|
     server.vm.hostname = "haboudaS"
-    server.vm.network "private_network", ip: "192.168.56.110", name: "vboxnet1"
+    worker.vm.network "public_network", ip: "192.168.56.110", name: "ebp0s8"
 
     server.vm.provider "virtualbox" do |vb|
       vb.name   = "haboudaS"
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   # ────────────────────────────────────────────
   config.vm.define "haboudaSW" do |worker|
     worker.vm.hostname = "haboudaSW"
-    worker.vm.network "private_network", ip: "192.168.56.111", name: "vboxnet1"
+    worker.vm.network "public_network", ip: "192.168.56.111", name: "ebp0s8"
 
     worker.vm.provider "virtualbox" do |vb|
       vb.name   = "haboudaSW"
