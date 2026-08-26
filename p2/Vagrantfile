@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "haboudaS" do |server|
     server.vm.hostname = "haboudaS"
-    worker.vm.network "public_network", ip: "192.168.56.110", name: "ebp0s8"
+    worker.vm.network "public_network", ip: "192.168.56.110", bridge: "ebp0s8"
 
     server.vm.provider "virtualbox" do |vb|
       vb.name   = "haboudaS"
@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
       vb.cpus   = 1
     end
 
-    server.vm.provision "shell", path: "scripts/setup.sh", name: "vboxnet1"
+    server.vm.provision "shell", path: "scripts/setup.sh", bridge: "vboxnet1"
   end
 
 end
