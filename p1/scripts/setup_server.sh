@@ -3,7 +3,8 @@ set -e
 
 echo "==> Installing K3s in controller mode..."
 
-apk add --no-cache curl
+# Replace your current 'apk add' with this:
+apk add --no-cache curl iptables ip6tables 
 
 export INSTALL_K3S_VERSION="v1.31.4+k3s1"
 export K3S_TOKEN="secrettoken"
